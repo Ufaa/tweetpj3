@@ -22,3 +22,5 @@ function () {
     Route::post('add', 'TweetController@addTweet'); //← 追記
 });
 
+Route::apiResource('/', TweetController::class);
+
