@@ -16,10 +16,11 @@ Route::group([
     Route::get('user', [AuthController::class, 'me']);
 });
 
-Route::group(['middleware' => 'api'], 
-function () {
-    Route::get('get', 'TweetController@getTweets');
-    Route::post('add', 'TweetController@addTweet'); //← 追記
+Route::group([
+    'middleware' => ['api'], 
+],function () {
+    Route::get('get', [TweetController::class, 'getTweets']);
+    Route::post('add', [TweetController::class, 'postTweet']);
 });
 
 Route::apiResource('/tweet', TweetController::class);
